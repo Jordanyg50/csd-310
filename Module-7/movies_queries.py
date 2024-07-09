@@ -37,14 +37,14 @@ def connect_and_query():
             print(genre)
 
         # Third query: Select movie names with runtime less than 2 hours
-        cursor.execute("SELECT movie_name FROM film WHERE runtime < 120;")
-        short_movies = cursor.fetchall()
-        print("\nMovies with runtime less than 2 hours:")
-        for film in short_movies:
+        cursor.execute("SELECT film_name FROM film WHERE film_runtime < 120;")
+        short_films = cursor.fetchall()
+        print("\nFilms with runtime less than 2 hours:")
+        for film in short_films:
             print(film[0])
 
         # Fourth query: List film names and directors grouped by director
-        cursor.execute("SELECT director, GROUP_CONCAT(movie_name SEPARATOR ', ') as films FROM movies GROUP BY director;")
+        cursor.execute("SELECT film_director, GROUP_CONCAT(film_name SEPARATOR ', ') as films FROM film GROUP BY film_director;")
         directors = cursor.fetchall()
         print("\nFilms grouped by director:")
         for director in directors:
